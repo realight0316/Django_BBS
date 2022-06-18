@@ -2,9 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title> Opening job board</title>
+    <title> notice list </title>
 </head>
 <body>
-    Hello World
+    <ul>
+        <li>번호 | 채용포지션 | 사용기술 | 작성날짜</li>
+        {%for article in articleList %}
+        <li><a href="/view/{{article.post_id}}>"{{article.post_id}}</a> | {{article.position_name}} | {{article.skills}} | {{write_date|date:"Y M d D"}}</li>
+        {% endfor %}
+    </ul>
 </body>
 </html>
