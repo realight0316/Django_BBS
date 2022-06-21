@@ -3,6 +3,10 @@ from board.forms import *
 
 # Create your views here.
 
+def signup(request):
+    if request.method == 'GET':
+        return render(request, 'signup.html')
+
 def write(request):
     if request.method == 'POST':
         form = Form(request.POST)
