@@ -1,5 +1,5 @@
-# wanted_pre_onboarding
-프리온보딩 백엔드 코스 x 프로젝트 온보딩 (모집: 2022.06.08 - 06.22.)
+# Django_BBS
+Django - MySQL을 이용하여 개인 게시판 시스템(Bulletin Board System) 구성
 
 ---
 
