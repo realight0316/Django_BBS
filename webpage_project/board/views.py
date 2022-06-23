@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from board.forms import *
 from models import Company
 from django.contrib.auth.hashers import make_password, check_password
@@ -31,6 +31,25 @@ def signup(request):
             )
             company_info.save()
         return render(request, 'signup.html', errorMsg)
+
+def login(request):
+    if request.method == 'GET':
+        return render(request, 'login.html')
+    elif request.method == 'POST':
+        company_id = request.POST.get('company_id', None)
+        company_pw = request.POST.get('company_pw', None)
+        errMsg = {}
+
+        if not (company_id and company_pw):
+            errMsg['error'] = '아이디와 비밀번호를 입력하시오'
+        else:
+            company = Company.objects.get(company_id = company_id)
+            if check_password(company_pw, company.company_pw):
+                request.session['company'] = company.id
+                return redirect('/')
+            else:
+                errMsg['error'] = "비밀번호를 다시 입력하시오"
+        return render(request, 'login.html', errMsg)
 
 def write(request):
     if request.method == 'POST':
