@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
 from board.forms import *
-from models import Company
+from .models import Company
 from django.contrib.auth.hashers import make_password, check_password
 
 # Create your views here.
